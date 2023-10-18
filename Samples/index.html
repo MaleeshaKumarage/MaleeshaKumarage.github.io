@@ -1,157 +1,91 @@
-<h1>Incredibly Basic Slider</h1>
 <style>
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
-
-    html {
-        border-top: 5px solid #fff;
-        background: #58DDAF;
-        color: #2a2a2a;
-    }
-
     html,
     body {
+        width: 100%;
+        height: 100%;
         margin: 0;
         padding: 0;
-        font-family: 'Open Sans';
+        font-family: "Helvetica", sans-serif;
     }
 
-    h1 {
-        color: #fff;
-        text-align: center;
-        font-weight: 300;
+    img {
+        max-width: 100%;
     }
 
-    #slider {
+    .slider-container {
+        height: 100%;
+        width: 100%;
         position: relative;
         overflow: hidden;
-        margin: 20px auto 0 auto;
-        border-radius: 4px;
-    }
-
-    #slider ul {
-        position: relative;
-        margin: 0;
-        padding: 0;
-        height: 200px;
-        list-style: none;
-    }
-
-    #slider ul li {
-        position: relative;
-        display: block;
-        float: left;
-        margin: 0;
-        padding: 0;
-        width: 500px;
-        height: 300px;
-        background: #ccc;
         text-align: center;
-        line-height: 300px;
     }
 
-    a.control_prev,
-    a.control_next {
+    .menu {
         position: absolute;
-        top: 40%;
-        z-index: 999;
-        display: block;
-        padding: 4% 3%;
-        width: auto;
-        height: auto;
-        background: #2a2a2a;
-        color: #fff;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 18px;
-        opacity: 0.8;
+        left: 0;
+        z-index: 900;
+        width: 100%;
+        bottom: 0;
+    }
+
+    .menu label {
         cursor: pointer;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background: #fff;
+        border-radius: 50px;
+        margin: 0 .2em 1em;
+
+        &:hover {
+            background: red;
+        }
     }
 
-    a.control_prev:hover,
-    a.control_next:hover {
-        opacity: 1;
-        -webkit-transition: all 0.2s ease;
+    .slide {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        z-index: 10;
+        padding: 8em 1em 0;
+        background-size: cover;
+        background-position: 50% 50%;
+        transition: left 0s .75s;
     }
 
-    a.control_prev {
-        border-radius: 0 2px 2px 0;
+    [id^="slide"]:checked+.slide {
+        left: 0;
+        z-index: 100;
+        transition: left .65s ease-out;
     }
 
-    a.control_next {
-        right: 0;
-        border-radius: 2px 0 0 2px;
+    .slide-1 {
+        background-image: url("https://source.unsplash.com/t7YycgAoVSw/1600x900");
     }
 
-    .slider_option {
-        position: relative;
-        margin: 10px auto;
-        width: 160px;
-        font-size: 18px;
+    .slide-2 {
+        background-image: url("https://source.unsplash.com/11H1SSVcIxc/1600x900");
+    }
+
+    .slide-3 {
+        background-image: url("https://source.unsplash.com/OlZ1nWLEEgM/1600x900");
     }
 </style>
-<div id="slider">
-    <a href="#" class="control_next">>></a>
-    <a href="#" class="control_prev">
-        << /a>
-            <ul>
-                <li>SLIDE 1</li>
-                <li style="background: #aaa;">SLIDE 2</li>
-                <li>SLIDE 3</li>
-                <li style="background: #aaa;">SLIDE 4</li>
-            </ul>
+<div class="slider-container">
+    <div class="menu">
+        <label for="slide-dot-1"></label>
+        <label for="slide-dot-2"></label>
+        <label for="slide-dot-3"></label>
+    </div>
+
+    <input id="slide-dot-1" type="radio" name="slides" checked>
+    <div class="slide slide-1"></div>
+
+    <input id="slide-dot-2" type="radio" name="slides">
+    <div class="slide slide-2"></div>
+
+    <input id="slide-dot-3" type="radio" name="slides">
+    <div class="slide slide-3"></div>
 </div>
-
-<div class="slider_option">
-    <input type="checkbox" id="checkbox">
-    <label for="checkbox">Autoplay Slider</label>
-</div>
-
-<script>
-    jQuery(document).ready(function ($) {
-
-        $('#checkbox').change(function () {
-            setInterval(function () {
-                moveRight();
-            }, 3000);
-        });
-
-        var slideCount = $('#slider ul li').length;
-        var slideWidth = $('#slider ul li').width();
-        var slideHeight = $('#slider ul li').height();
-        var sliderUlWidth = slideCount * slideWidth;
-
-        $('#slider').css({ width: slideWidth, height: slideHeight });
-
-        $('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
-
-        $('#slider ul li:last-child').prependTo('#slider ul');
-
-        function moveLeft() {
-            $('#slider ul').animate({
-                left: + slideWidth
-            }, 200, function () {
-                $('#slider ul li:last-child').prependTo('#slider ul');
-                $('#slider ul').css('left', '');
-            });
-        };
-
-        function moveRight() {
-            $('#slider ul').animate({
-                left: - slideWidth
-            }, 200, function () {
-                $('#slider ul li:first-child').appendTo('#slider ul');
-                $('#slider ul').css('left', '');
-            });
-        };
-
-        $('a.control_prev').click(function () {
-            moveLeft();
-        });
-
-        $('a.control_next').click(function () {
-            moveRight();
-        });
-
-    });
-
-</script>
