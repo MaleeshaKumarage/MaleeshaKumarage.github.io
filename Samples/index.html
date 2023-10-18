@@ -1,1 +1,57 @@
-<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto%2F%3Ffbid%3D3226651057378851%26set%3Dpb.100064833664811.-2207520000&width=500&show_text=true&appId=2286825111423342&height=449"  style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Image Slider</title>
+    
+    <!-- Add Slick carousel styles -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+
+    <!-- Add your custom CSS if needed -->
+    <style>
+        /* Add custom styles here */
+        .slider-container {
+            width: 80%;
+            margin: auto;
+        }
+
+        .slick-slide {
+            margin: 0 10px;
+        }
+
+        /* Add more styles as needed */
+    </style>
+</head>
+<body>
+
+    <!-- Slider Container -->
+    <div class="slider-container">
+        <div class="slider">
+            <!-- Iframe for each Facebook image -->
+            <div><iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto%2F%3Ffbid%3D3226651057378851%26set%3Dpb.100064833664811.-2207520000&width=500&show_text=true&appId=2286825111423342&height=449" width="500" height="449" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></div>
+            <div><iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto%2F%3Ffbid%3D3104247826285842%26set%3Dpb.100064833664811.-2207520000&width=500&show_text=true&appId=338815513926488&height=394" width="500" height="394" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></div>
+            <!-- Repeat for all 10 images -->
+        </div>
+    </div>
+
+    <!-- Add Slick carousel script and your custom script if needed -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+    <script>
+        // Initialize the Slick carousel
+        $(document).ready(function(){
+            $('.slider').slick({
+                infinite: true,
+                slidesToShow: 3, // Number of slides to show at a time
+                slidesToScroll: 1, // Number of slides to scroll at a time
+                autoplay: true,
+                autoplaySpeed: 2000, // Set the speed of autoplay
+            });
+        });
+    </script>
+
+</body>
+</html>
